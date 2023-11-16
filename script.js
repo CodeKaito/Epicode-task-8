@@ -17,23 +17,42 @@ Infine, crea un SECONDO array in cui inserirai SOLO gli ambassador.
 */
 
 const marco = {
-  name: "Marco",
-  lastName: "Rossi",
-  isAmbassador: true,
-}
+    name: "Marco",
+    lastName: "Rossi",
+    isAmbassador: true,
+  }
+  
+  const paul = {
+    name: "Paul",
+    lastName: "Flynn",
+    isAmbassador: false,
+  }
+  
+  const amy = {
+    name: "Amy",
+    lastName: "Reed",
+    isAmbassador: false,
+  }
+  
+  const prices = [34, 5, 2];
+  const shippingCost = 50;
+  const discount = 0.30
+  let user = amy //cambia il valore qui per provare se il tuo algoritmo funziona!
+  let cart = 50;
+  
+(user.isAmbassador === true || cart >= 100) ? cart*=discount : cart;
+console.log(cart);
 
-const paul = {
-  name: "Paul",
-  lastName: "Flynn",
-  isAmbassador: false,
-}
+let users = [];
+let ambassadors = [];
+users.push(paul,marco,amy);
 
-const amy = {
-  name: "Amy",
-  lastName: "Reed",
-  isAmbassador: false,
+for (let i = 0; i < users.length; i++) {
+    if (users[i].isAmbassador === true) {
+        console.log(users[i].name + " " + users[i].lastName + " é un ambassador");
+        ambassadors.push(users[i]);
+    } else {
+        console.log(users[i].name + " " + users[i].lastName + " non é un ambassador");
+    }
 }
-
-const prices = [34, 5, 2]
-const shippingCost = 50
-let utenteCheEffettuaLAcquisto = amy //cambia il valore qui per provare se il tuo algoritmo funziona!
+console.log(ambassadors);
