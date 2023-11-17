@@ -37,11 +37,15 @@ const marco = {
   const prices = [34, 5, 2];
   const shippingCost = 50;
   const discount = 0.30
-  let user = amy //cambia il valore qui per provare se il tuo algoritmo funziona!
-  let cart = 50;
+   let user = amy; //cambia il valore qui per provare se il tuo algoritmo funziona!
+  let cart = 100; // il costo del carrello complessivo prima di calcolare la spedizione
+  let payment = 0;
   
-(user.isAmbassador === true || cart >= 100) ? cart*=discount : cart;
-console.log(cart);
+  if (cart > 100) {
+    payment = user.isAmbassador ? cart - (cart * discount) : cart;
+    } else {
+    payment = user.isAmbassador ? cart - (cart * discount) + shippingCost : cart + shippingCost;
+    }
 
 let users = [];
 let ambassadors = [];
