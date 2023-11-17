@@ -16,36 +16,62 @@ ES. L'utente Marco Rossi e' un ambassador, quindi la frase dovrebbe essere "Marc
 Infine, crea un SECONDO array in cui inserirai SOLO gli ambassador.
 */
 
+// Definizione di oggetti utente
 const marco = {
     name: "Marco",
     lastName: "Rossi",
     isAmbassador: true,
-  }
-  
-  const paul = {
+}
+
+const paul = {
     name: "Paul",
     lastName: "Flynn",
     isAmbassador: false,
-  }
-  
-  const amy = {
+}
+
+const amy = {
     name: "Amy",
     lastName: "Reed",
     isAmbassador: false,
-  }
-  
-  const prices = [34, 5, 2];
-  const shippingCost = 50;
-  const discount = 0.30
-   let user = amy; //cambia il valore qui per provare se il tuo algoritmo funziona!
-  let cart = 100; // il costo del carrello complessivo prima di calcolare la spedizione
-  let payment = 0;
-  
-  if (cart > 100) {
-    payment = user.isAmbassador ? cart - (cart * discount) : cart;
+}
+
+// Array di prezzi e calcolo del totale
+const prices = [34, 5, 2, 90];
+let totalPrices = 0;
+for (i = 0; i < prices.length; i++) {
+    totalPrices += prices[i];
+}
+
+// Funzione eCommerce che calcola il pagamento
+function eCommerce(selectedUser, cartAmount) {
+    // Costanti per la spedizione e lo sconto
+    const shippingCost = 50;
+    const discount = 0.3;
+
+    // Variabili utente, carrello e pagamento
+    let user = selectedUser; // Cambia il valore qui per provare se il tuo algoritmo funziona!
+    let cart = cartAmount; // il costo del carrello complessivo prima di calcolare la spedizione
+    let payment = 0;
+
+    // Condizioni per calcolare il pagamento
+    if (cart > 100) {
+        // Se il carrello è superiore a 100, verifica se l'utente è un ambasciatore
+        payment = user.isAmbassador ? (
+            console.log("Sconto applicato a " + user.name + " di $" + (cart * discount)),
+            cart - (cart * discount)
+        ) : cart;
     } else {
-    payment = user.isAmbassador ? cart - (cart * discount) + shippingCost : cart + shippingCost;
+        // Se il carrello è inferiore a 100, verifica se l'utente è un ambasciatore
+        payment = user.isAmbassador ? cart - (cart * discount) + shippingCost : cart + shippingCost;
     }
+
+    // Stampa dei dettagli del pagamento
+    console.log("Il totale complessivo del carrello dell'utente: " + user.name + ", é: " + cart + "$.");
+    console.log("Il totale dovuto ammonta a: " + payment + "$.");
+}
+
+// Chiamata della funzione con l'utente e il totale dei prezzi
+eCommerce(amy, totalPrices);
 
 let users = [];
 let ambassadors = [];
